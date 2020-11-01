@@ -1,0 +1,186 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+         <a href="https://www.javatpoint.com/angular-7-directives">Learned From</a>
+      </div>
+       <div class="col-md-4">
+          <div class="card">
+             <label class="f-bold">Interpolation</label>
+             <span> ID is :{{ID}}</span>
+             <span> Name is : {{Name}}</span>
+          </div>
+       </div>
+       <div class="col-md-4">
+          <div class="card">
+             <label class="f-bold">Property Binding</label>
+             <span> My Full Name is :<span [innerHtml]='fullName'></span></span>
+          </div>
+       </div>
+       <div class="col-md-4">
+          <div class="card">
+             <label class="f-bold">Boolean property</label>
+             <span>  
+             <button class="btn btn-danger" [disabled]='isDisabled' (click)="check()">Disable me</button> 
+             </span>
+          </div>
+       </div>
+       <div class="col-md-4">
+          <div class="card">
+             <label class="f-bold">Click Fuction</label>
+             <button class="btn btn-success" *ngIf=(aa) (click)="change()">show red button</button>  
+             <button class="btn btn-danger" *ngIf=(bb) (click)="change()">show green button</button>
+          </div>
+       </div>
+       <div class="col-md-4">
+          <div class="card">
+             <label class="f-bold">Event Binding</label>
+             <button class="btn btn-primary"  
+                (click)="onCreateServer()">Add Server</button>  
+             {{serverCreationStatus}}  
+          </div>
+       </div>
+       <div class="col-md-4">
+          <div class="card">
+             <label class="f-bold">Data with Event Binding</label>
+             <label>Server Name</label>  
+             <input type="text" class="form-control" placeholder="(input)" (input)="OnUpdate($event)">  
+             <span>{{data}}</span>
+          </div>
+       </div>
+       <div class="col-md-4">
+          <div class="card">
+             <label class="f-bold">Set Timeout</label>
+             <p>Here, we set a time of 5000 millisecond or 5 second. After 5 seconds, the button will be disabled automatically.</p>
+             <button class="btn btn-primary"  
+                [disabled]="allowNewServer">Add Fast</button>  
+             <span>{{allowNewServer}}</span>  
+          </div>
+       </div>
+       <div class="col-md-4">
+          <div class="card">
+             <label class="f-bold">*ngIf Style</label>
+             <p [ngStyle]="{color: getColor()}">  
+               Server  with ID {{serverID}} is {{serverStatus}}.
+             </p>
+          </div>
+       </div>
+       <div class="col-md-4">
+          <div class="card">
+             <label class="f-bold">Direct Binding</label>
+             <input type="text" class="form-control" #da [(ngModel)]="giveID" placeholder="#da"> 
+             <p>{{da.value}}</p>
+          </div>
+       </div>
+       <div class="col-md-4">
+          <div class="card">
+             <label class="f-bold">Modal</label>
+             <button class="btn btn-primary" type="submit" (click)="openModal()">Open Modal</button>
+          </div>
+        </div>
+     
+       <div class="col-md-4">
+          <div class="card">
+             <label class="f-bold">Add Remove</label>
+             <button class="btn btn-primary" (click)="OnAddServer()">Add Server</button><br>
+             <ul class="list-group">  
+                <li class="list-group-item p-cursor" *ngFor="let server of servers; let i = index" (click)="onRemoveServer(i)">
+                {{ server }}  
+                </li>  
+             </ul>
+          </div>
+       </div>
+       <div class="col-md-4">
+          <div class="card">
+             <label class="f-bold">Flags</label>
+             <form #myForm="ngForm">
+                <label>Name *</label> 
+                <input type="text" class="form-control" 
+                       required [(ngModel)]="name" name="name"><br>
+                <button class="btn btn-primary" type="submit" [disabled]="!myForm.form.valid">Check required</button>
+              </form>
+          </div>
+       </div>
+       <div class="col-md-4">
+          <div class="card">
+             <label class="f-bold">*ngIf directive</label>
+             <label>Server Name</label>  
+             <input type="text" class="form-control" [(ngModel)]="serverName">  <br>
+             <button class="btn btn-primary" (click)="create()">Add Server</button>  
+             <p *ngIf="serverCreated; else noServer"> Server is created. Server name is {{serverName}}</p>
+             <ng-template #noServer>
+                <p>No Server is created.</p>
+             </ng-template>
+          </div>
+       </div>
+       <div class="col-md-4">
+          <div class="card">
+             <label class="f-bold">Template-driven Forms</label>
+             <label> Favorite Color</label> 
+             <input type="text" class="form-control" [(ngModel)]="favoriteColor"> 
+             <hr>
+             <label class="f-bold">Reactive Forms</label>
+             <label> Favorite Color</label> 
+             <input type="text" class="form-control" [formControl]="favoriteColorControl">  
+          </div>
+       </div>
+     
+       <div class="col-md-4">
+          <div class="card">
+             <label class="f-bold">ngClass</label>
+             <ul *ngFor="let celeb of singers">
+                <li [ngClass]="{
+                   'text-success':celeb.country === 'USA',
+                   'text-secondary':celeb.country === 'Canada',
+                   'text-danger':celeb.country === 'Puorto Rico',
+                   'text-info':celeb.country === 'India'
+                   }">{{ celeb.artist }} ({{ celeb.country }})
+                </li>
+             </ul>
+          </div>
+       </div>
+       <div class="col-md-4">
+          <div class="card">
+             <label class="f-bold">Pipes</label>
+             <label>uppercase Pipe - my name is tuba</label>
+             <span>O/p : {{smallLetters | uppercase}}</span>
+             <hr>
+             <label>Currency Pipe - 6589.23</label>
+             <span>O/p : {{6589.23 | currency:"USD":true}}</span>
+             <hr>
+             <label>Date Pipe - todaydate</label>
+             <span>O/p as a date : {{todaydate | date:'d/M/y'}}</span>
+             <span> as a time : {{todaydate | date:'shortTime'}}</span>
+             <hr>
+             <label>Months Pipe - Months</label>
+             <span>O/p: {{months | slice:2:6}}</span>
+             <hr>
+             <label>Percent  Pipe - 00.54565 </label>
+             <span>O/p: {{00.54565  | percent}}</span>
+          </div>
+       </div>
+       <div class="col-md-4">
+         <div class="card">
+               <label class="f-bold">style.background</label>
+               <input type="text" class="form-control" #da [(ngModel)]="giveID" placeholder="Type any color like red, green, yellow, etc."> <br>
+               <div class="card" [style.background]="da.value" 
+               style="height:50px;width:100%;border:1px solid #ddd;font-size:12px;padding: 4%;">
+                 <p>Change My Background Color</p>
+               </div><br>
+                  <label>Your Entered Color is : {{da.value}}</label>
+         </div>
+      </div>
+      
+    </div>
+ </div>
+ <ng-template #Modal let-close="close">
+    <div class="modal-header">
+       <h5 class="modal-title"> Modal Heading</h5>
+       <button type="button" class="close" (click)="closeModal()">
+       <span aria-hidden="true">&times;</span>
+       </button>
+    </div>
+    <div class="modal-body ">
+      <p>Data</p>
+       
+    </div>
+ </ng-template>

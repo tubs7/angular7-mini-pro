@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row mt-4">
+     <div class="col-md-12">
+        <div class="card">
+            <p>One : Parent</p>
+            <!-- <input type="text" class="form-control" #ccomponent><br>
+            <input class="btn btn-sm btn-info" type="submit" (click)="save(ccomponent.value)"> -->
+            <form name="form"  #f="ngForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" name="name" [(ngModel)]="newData.name">
+                </div>
+                <div class="form-group">
+                    <label for="age">age</label>
+                    <select class="form-control" name="age" [(ngModel)]="newData.age">
+                      <option value="20">20</option>
+                      <option value="30">30</option>
+                      <option value="40">40</option>
+                    </select>    
+                </div>
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-md btn-info mr-2" (click)="AddItem(f);">Pass this values to another component</button>
+                    <button type="submit" class="btn btn-md btn-danger" (click)="reset(f)">Reset</button>
+                </div>
+             </form>           
+        </div>
+     </div>
+  </div>
+</div>

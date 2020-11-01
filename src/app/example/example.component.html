@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+       <!-- <div class="col-md-4">
+          <div class="card">
+            <form class="form-inline">
+              <div class="form-group">
+                <input type="search"
+                       class="form-control"
+                       placeholder="Enter search string"
+                       [formControl]="searchField">
+              </div>
+            </form>
+            <form [formGroup]="myForm" (ngSubmit)="save()">
+               <input type="text" class="form-control" formControlName="fname">
+               <input type="text" class="form-control" formControlName="lname">
+               <button class="btn btn-success" type="submit"> save</button>
+           </form>
+ 
+           <div>
+             {{ selectedFeatures | json }}
+           </div>
+           <button type="submit" (click)="onAdd()" class="btn btn-warning btn-sm mt-2">Add</button>
+           <button type="submit" (click)="onRemove()" class="btn btn-warning btn-sm mt-2">Remove</button>
+           
+           </div>
+          </div> -->
+    
+          <div class="col-md-4"></div>
+       <div class="col-md-4">
+          <h6>Directive Example </h6>
+          <div class="card">
+             <label>Using Directive Click Fuction</label>
+             <!-- <button class="btn btn-sm btn-info text-white" appSimple (click)=($event)>
+                Goto W3 School
+                </button>
+                <br><br> -->
+             <a [href]="'https://www.w3schools.com'" appSimple style="color:#ffffff;" target="_blank">Goto W3 School</a> 
+             <br>
+             <label>Using Directive CSS Color Property</label>
+             <p appSimple>Show me my color</p>
+             <br>
+             <label>OnClick Download File</label>
+             <a [href]="fileUrl" download="file.txt">DownloadFile</a>
+          </div>
+       </div>
+    </div>
+ </div>

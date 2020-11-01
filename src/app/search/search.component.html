@@ -1,0 +1,19 @@
+<div class="row mt-4">
+  <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <div class="card">
+      <input class="form-control" [(ngModel)]="searchText" placeholder="search text goes here">
+      <ul class="mt-4 list-group">
+        <li class="list-group-item" *ngFor="let c of characters | filter : searchText">
+        {{c}}
+        </li>
+      </ul>
+    </div>
+    </div>
+  <!-- <div class="col-sm-4">
+    <button type="button" class="btn btn-primary">
+      <span>Notifications</span>
+      <span class="badge badge-md badge-circle badge-floating badge-danger border-white">4</span>
+    </button>
+  </div> -->
+</div>

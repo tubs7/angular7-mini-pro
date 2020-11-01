@@ -1,0 +1,50 @@
+<div class="container">  
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <label>Select Status From Dropdown</label>
+          <select class="form-control" [(ngModel)]="TableHeader.status" (ngModelChange)="SearchTable(TableHeader.status)">  
+            <!-- <option *ngFor="let d of TableHeader" [ngValue]="status">{{d.status}} </option>   -->
+            <option *ngFor="let d of TableHeader">{{d.status}} </option>  
+          </select> 
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <table class="TFtable table table-bordered">  
+          <tr>
+            <th>Title</th>  
+            <th>status</th>
+          </tr>  
+          <tr *ngFor="let d of TableDetails">  
+            <td>{{d.title}}</td>  
+            <td>{{d.Status}}</td>  
+          </tr>  
+        </table> 
+      </div>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <div class="card">
+        <h4>IntervalObservable Example</h4>
+        <div ngx-auto-scroll style=" width: 300px;
+        height: 250px;
+        border: solid red;
+        overflow-y: scroll;">
+          <div *ngFor="let item of items">{{ item }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 
+Steps..
+create Array : Tables
+create object : TaleDetails
+Create filter on status :this.Tables.filter()
+create header (dropdown data) : TableHeader []
+Create constructor : this.getDate()
+create getData(){ return this.TableHEader} -->
+

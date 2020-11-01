@@ -1,0 +1,125 @@
+<div class="container">
+ 
+    <div class="row">
+   
+            <hr>
+       <div class="col-md-4 text-justify">
+          <label>POST</label>
+          <h6>This Post Data is coming form Json File <a href="https://jsonplaceholder.typicode.com/pots">jsonplaceholder</a></h6>
+          <div class="table table-responsive">
+             <table class="table-bordered">
+                <thead>
+                   <th>id</th>
+                   <th>Title</th>
+                   <th>Body</th>
+                </thead>
+                <tbody *ngFor="let s of postList,let i = index">
+                   <td *ngIf="i < 3">{{i+1}}</td>
+                   <td *ngIf="i < 3">{{s.title}}</td>
+                   <td *ngIf="i < 3">{{s.body}}</td>
+                </tbody>
+             </table>
+          </div>
+       </div>
+       
+       <div class="col-md-8">
+          <label>USER</label>
+          <h6>This Users Data is coming form Json File <a href="https://jsonplaceholder.typicode.com/users">jsonplaceholder</a></h6>
+          <div class="table table-responsive">
+             <table class="table-bordered">
+                <thead>
+                   <th>ID</th>
+                   <th>name</th>
+                   <th>username</th>
+                   <th>email</th>
+                   <th>street</th>
+                   <th>suite</th>
+                   <th>city</th>
+                   <th>zipcode</th>
+                </thead>
+                <tbody *ngFor="let u of userList">
+                   <td>{{u.id}}</td>
+                   <td>{{u.name}}</td>
+                   <td>{{u.username}}</td>
+                   <td>{{u.email}}</td>
+                   <td>{{u.address.street}}</td>
+                   <td>{{u.address.suite}}</td>
+                   <td>{{u.address.city}}</td>
+                   <td>{{u.address.zipcode}}</td>
+                </tbody>
+             </table>
+          </div>
+       </div>
+    </div>
+    <div class="row">
+       <div class="col-md-4">
+          <label>Photos</label>
+          <h6>This Photos Data is coming form Json File <a href="https://jsonplaceholder.typicode.com/photos">jsonplaceholder</a></h6>
+          <div class="table table-responsive">
+             <table class="table-bordered">
+                <thead>
+                   <th>id</th>
+                   <th>Title</th>
+                   <th>thumbnailUrl</th>
+                </thead>
+                <tbody *ngFor="let p of photosList,let i = index">
+                   <td *ngIf="i < 3">{{i+1}}</td>
+                   <td *ngIf="i < 3">{{p.title}}</td>
+                   <td *ngIf="i < 3"><img src={{p.thumbnailUrl}}> </td>
+                </tbody>
+             </table>
+          </div>
+       </div>
+       <div class="col-md-4">
+          <label>Todos</label>
+          <h6>This Todos Data is coming form Json File <a href="https://jsonplaceholder.typicode.com/todos">jsonplaceholder</a></h6>
+          <div class="table table-responsive">
+             <table class="table-bordered">
+                <thead>
+                   <th>id</th>
+                   <th>Title</th>
+                   <th>Status</th>
+                </thead>
+                <tbody *ngFor="let t of todosList,let i = index">
+                   <td *ngIf="i < 4" >{{i+1}}</td>
+                   <td *ngIf="i < 4">{{t.title}}</td>
+                   <td *ngIf="i < 4" [ngClass]="{
+                   'text-success':t.completed == true,
+                   'text-danger':t.completed == false
+                   }"> {{t.completed}} </td>
+                </tbody>
+             </table>
+          </div>
+          
+       </div>
+       <div class="col-md-2">
+          <label>NgClass</label>
+          <ul class="list-group" *ngFor="let celeb of singers">
+             <li class="list-group-item" [ngClass]="{
+                'text-success':celeb.country === 'USA',
+                'text-secondary':celeb.country === 'Canada',
+                'text-danger':celeb.country === 'Puorto Rico',
+                'text-info':celeb.country === 'India'
+                }">{{ celeb.artist }} ({{ celeb.country }})
+             </li>
+          </ul>
+       </div>
+       <div class="col-md-2">
+            <label>Form JSON File</label>
+            <div class="table table-responsive">
+               <table class="table-bordered">
+                  <thead>
+                     <th>ID</th>
+                     <th>name</th>
+                     <th>username</th>
+                  </thead>
+                  <tbody *ngFor="let u of newList">
+                     <td>{{u.id}}</td>
+                     <td>{{u.name}}</td>
+                     <td>{{u.username}}</td>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+    </div>
+ </div>

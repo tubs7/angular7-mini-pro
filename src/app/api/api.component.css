@@ -1,0 +1,28 @@
+.top{
+    margin-top: 5%;
+}
+h4, table{
+font-size: 12px;
+}
+h6{
+    font-size: 14px;
+    color: brown;
+}
+img{
+    height: 50px;
+    width: 50px;
+}
+.approved{
+    background-color: green;
+    color: white;
+}
+.pending{
+    background-color: red;
+    color: white;
+}
+.table td, .table th {
+    padding: 3px 10px;
+}
+.list-group-item {
+    padding: 3px 10px;
+}

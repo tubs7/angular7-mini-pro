@@ -1,0 +1,163 @@
+<div class="container">
+   <div class="row">
+      <div class="col-md-4">
+         <div class="card">
+            <div class="switch-field">
+               <input type="radio" id="radio-one" name="switch-one" value="One" checked  (click)="setradio('One')" ngModel/>
+               <label for="radio-one">One</label>
+               <input type="radio" id="radio-two" name="switch-one" value="Two"  (click)="setradio('Two')" ngModel/>
+               <label for="radio-two">Two</label>
+            </div>
+            <div *ngIf="isSelected('One')" >
+               <form>
+                  <select class="form-control" name="data" ngModel>
+                     <option value="" disabled>One</option>
+                     <option *ngFor="let data of one" [ngValue]="data">
+                     {{ data.name }}
+                     </option>
+                  </select>
+               </form>
+            </div>
+            <div *ngIf="isSelected('Two')">
+               <form>
+                  <select class="form-control" name="data" ngModel>
+                     <option value="" disabled>Two</option>
+                     <option *ngFor="let data of two" [ngValue]="data">
+                     {{ data.name }}
+                     </option>
+                  </select>
+               </form>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-4">
+         <div class="card">
+            <p>Ye hai Selected Value : {{selectedValue}}</p>
+            <form>
+               <select class="form-control" (change)="changeOpt($event.target.value)">
+                  <option value="Number" selected>Number</option>
+                  <option value="Alphabet">Alphabet</option>
+               </select>
+               <br>
+               <div *ngIf="selectedValue=='Alphabet'" >
+                  <select class="form-control" name="data" ngModel >
+                     <option value="" disabled>Select Alphabet</option>
+                     <option *ngFor="let data of one" [ngValue]="data">
+                     {{ data.name }}
+                     </option>
+                  </select>
+               </div>
+               <div *ngIf="selectedValue=='Number'" >
+                  <select  class="form-control" name="data" ngModel>
+                     <option value="" disabled>Select Number</option>
+                     <option *ngFor="let data of two" [ngValue]="data">
+                     {{ data.name }}
+                     </option>
+                  </select>
+               </div>
+            </form>
+         </div>
+      </div>
+      <div class="col-md-4">
+         <div class="card">
+            <p>Dynamically Add Options</p>
+            <form [formGroup]="countryForm">
+               <select class="form-control" formControlName="countryControl" [compareWith]="compareFn">
+               <option [ngValue]="country" *ngFor="let country of countries">{{country.name}}</option>
+               </select><br>
+               <input class="form-control" type="text" #name placeholder="Add country name"><br>
+               <input class="form-control" type="text" #code placeholder="Add country code"><br>
+               <button class="btn btn-sm btn-info" (click)="addNewOption(name.value, code.value)">Add to SELECT</button>
+            </form>
+            
+         </div>
+      </div>
+      <div class="col-md-4">
+         <div class="card">
+            <label for="">Select and Radio Button Binding</label>
+            <form>
+               <select class="form-control" (change)="changeList($event.target.value)">
+                  <option value="s" selected>select</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+               </select>
+               <br>
+               <div *ngIf="selectedList=='1'" >
+                  <ul class="list-group">
+                     <li class="list-group-item"  *ngFor="let item of list1">
+                        <input type="radio" [(ngModel)]="radioSelected1" name="list_name1"
+                        value="{{item.value}}" (change)="onItemChange(item)"/> 
+                        {{item.name}}
+                     </li>
+                  </ul>
+               </div>
+               <div *ngIf="selectedList=='2'" >
+                  <ul class="list-group">
+                     <li class="list-group-item"  *ngFor="let item of list2">
+                        <input type="radio" [(ngModel)]="radioSelected2" name="list_name2"
+                        value="{{item.value}}" (change)="onItemChange(item)"/> 
+                        {{item.name}}
+                     </li>
+                  </ul>
+               </div>
+               <div *ngIf="selectedList=='3'" >
+                  <ul class="list-group">
+                     <li class="list-group-item"  *ngFor="let item of list3">
+                        <input type="radio" [(ngModel)]="radioSelected3" name="list_name3"
+                        value="{{item.value}}" (change)="onItemChange(item)"/> 
+                        {{item.name}}
+                     </li>
+                  </ul>
+               </div>
+            </form>
+         </div>
+      </div>
+      <div class="col-md-4">
+         <div *ngIf="radioSelected=='1'" >
+            <div class="card">
+               <h6>{{radioSelectedName}} is Selected</h6>
+            </div>
+         </div>
+         <div *ngIf="radioSelected=='2'">
+            <div class="card">
+               <h6>{{radioSelectedName}} is Selected</h6>
+            </div>
+         </div>
+         <div *ngIf="radioSelected=='3'">
+            <div class="card">
+               <h6>{{radioSelectedName}} is Selected</h6>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-4">
+         <div class="card">
+            <label for="">ngSwitch and *ngSwitchCase</label>
+         <select class="form-control" name ="myVar" ngModel>
+            <option [ngValue]="dogs">Dogs</option>
+            <option [ngValue]="tuts">Tutorials</option>
+            <option [ngValue]="cars">Cars</option>
+            </select>
+            <br>
+            <div [ngSwitch]="myVar">
+            <div *ngSwitchCase="dogs">
+               <label>Dogs</label>
+               <p>Welcome to a world of dogs.</p>
+            </div>
+            <div *ngSwitchCase="tuts">
+               <label>Tutorials</label>
+               <p>Learn from examples.</p>
+            </div>
+            <div *ngSwitchCase="cars">
+               <label>Cars</label>
+               <p>Read about cars.</p>
+            </div>
+            <div *ngSwitchDefault>
+               <label>Switch</label>
+               <p>Select topic from the dropdown, to switch the content of this DIV.</p>
+            </div>
+            </div>
+            </div>
+      </div>
+   </div>
+</div>

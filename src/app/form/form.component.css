@@ -1,0 +1,15 @@
+.top{
+    margin-top: 5%;
+}
+label{
+    font-size: 12px;
+}
+.list-group-item {
+    padding: 3px 10px;
+}
+.form-control {
+    height: calc(15px + .75rem + 2px);
+}
+.font-b{
+    font-weight: bold;
+}

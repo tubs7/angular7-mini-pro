@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+    <div class="card">
+      <span><a href="https://www.c-sharpcorner.com/article/adding-dropzone-in-angular-7-application/">
+        DropzoneModule</a></span>
+        <dropzone [config]="config" [message]="'Drag and Drop Images here'"></dropzone>  
+    </div>
+    </div>
+      <div class="col-md-6">
+        <div class="card">
+            <span><a href="https://appdividend.com/2018/12/22/angular-7-drag-and-drop-tutorial-example/">
+              CdkDragDrop</a></span>
+            <!-- <form class="form-inline">
+                <div class="form-group">
+                  <input type="search"
+                         class="form-control"
+                         placeholder="Enter search string"
+                         [formControl]="searchField">
+                </div>
+              </form> -->
+        <div cdkDropList class="example-list list-group" (cdkDropListDropped)="drop($event)">
+            <p>Drag And Drop Testing :</p>
+           <div class="example-box list-group-item p-grab" *ngFor="let movie of movies" cdkDrag>{{movie}}</div>
+         </div>
+      </div>
+    </div>
+    
+  </div>
+</div> 

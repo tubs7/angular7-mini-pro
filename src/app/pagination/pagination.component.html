@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+       <div class="card">
+         <a href="http://michaelbromley.github.io/ngx-pagination/#/basic">Learned Form</a><br>
+         <div class="list">
+           <ul class="list-group">
+             <li class="list-group-item" *ngFor="let item of collection | paginate: { itemsPerPage: 5, currentPage: p }">
+               {{ item }}
+             </li>
+           </ul>
+           <pagination-controls (pageChange)="p = $event"></pagination-controls>
+         </div>
+       </div>
+    </div>
+    <div class="col-md-3">
+      <tag-input [ngModel]="['@item']"
+      [onlyFromAutocomplete]="true">
+<tag-input-dropdown [showDropdownIfEmpty]="true"
+                   [autocompleteItems]="['iTem1', 'item2', 'item3']">
+</tag-input-dropdown>
+</tag-input>
+    </div>
+  </div>
+</div>

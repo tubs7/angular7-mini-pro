@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="row mt-4">
+       <div class="col-md-6">
+          <div class="card">
+             <div class="table-responsive">
+                <table class="table-bordered">
+                   <thead>
+                      <tr>
+                         <th *ngFor="let col of colnames">{{col}} </th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <tr *ngFor="let el of elements;let id = index">
+                         <th>{{id+1}}</th>
+                         <td>{{el.name}}</td>
+                         <td>{{el.age}}</td>
+                         <td>
+                            <i class="material-icons text-success" (click)="openModal()">edit</i>
+                            <i class="material-icons text-danger" (click)="deleteData(el,myform)">delete</i>
+                          </td>
+                      </tr>
+                   </tbody>
+                </table>
+             </div>
+          </div>
+       </div>
+       <div class="col-md-6">
+          <div class="card">
+              <form #myform="ngForm">
+                <div class="col-md-12">
+                   <div class="mb-3">
+                      <label>Name</label>
+                      <input type="text" class="form-control" [(ngModel)]="elements.name" name="name" ng-reflect-required>
+                   </div>
+                </div>
+                <div class="col-md-12">
+                   <div class="mb-3">
+                      <label>Age</label>
+                      <select class="form-control mb-3" [(ngModel)]="elements.age" name="age" ng-reflect-required>
+                      <option value="20">20</option>
+                      <option value="30">30</option>
+                      <option value="40">40</option>
+                      </select>    
+                   </div>
+                </div>
+                <div class="col-md-12">
+                   <button type="submit" class="btn btn-info mr-4"  (click)="add(myform)">Add</button>
+                   <button type="submit" class="btn btn-danger" (click)="reset(myform)">Reset</button>
+                   <!-- <button type="submit" class="btn btn-success mr-4" (click)="check(myform)">check</button> -->
+                </div>
+             </form>
+          </div>
+       </div>
+    </div>
+ </div>
+<!-- <button (click)="openModal()">open the modal</button> -->

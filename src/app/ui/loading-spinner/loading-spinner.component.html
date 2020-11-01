@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+        <a href="https://www.npmjs.com/package/ngx-spinner">learned From</a>
+    </div>
+    <div class="col-md-4 text-center">
+      <button class="btn btn-info" (click)="showSpinner()">Start Spinner</button><br>
+      <p>Click Two times to see the Spinner</p>
+    </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-12">
+      <div class="card" style="height: 500px;margin-top: 3%;" *ngIf="showCard">
+        <ngx-spinner [fullScreen]="false" type="ball-clip-rotate-multiple" size="medium">
+          <p class="loading">Loading Awesomeness...</p>
+        </ngx-spinner>
+      </div>
+    </div>
+  </div>
+</div>

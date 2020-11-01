@@ -1,0 +1,73 @@
+<div class="container">
+    <!-- <div class="row">
+        <div class="col-sm-6">
+          <div class="text-center">
+            <p>
+              Parent Component (This)
+            </p>
+            <p>{{ CData }}</p>
+            </div>
+        </div>
+      </div> -->
+  <div class="row mt-4">
+     <div class="col-md-6">
+      <div class="card">
+        <p>Two : Child</p>
+        <div class="table-responsive">
+            <table class="table-bordered">
+               <thead>
+                  <tr>
+                     <th>ID</th><th>Name</th><th>Age</th><th>Actions</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr *ngFor="let el of childData;let id = index">
+                     <td>{{id+1}}</td>
+                     <td>{{el.name}}</td>
+                     <td>{{el.age}}</td>
+                     <td>
+                        <i class="material-icons text-success" (click)="EditItem(id)">edit</i>
+                        <i class="material-icons text-danger" (click)="DeleteItem(id)">delete</i>
+                      </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-6">
+      <!-- <app-one (childEvent)="CData=$event"></app-one> -->
+      <app-one (data)="eventHandler($event)"></app-one>
+      </div>
+  </div>
+</div>
+<ng-template #editModal let-close="close">
+   <div class="modal-header">
+      <h5 class="modal-title"> Edit </h5>
+      <button type="button" class="close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+      </button>
+   </div>
+   <div class="modal-body ">
+      <div class="form-group add">
+         <!-- Form that gets user input --> 
+         <form name="itemForm"> 
+            <label>Name</label>     
+            <input type="text" class="form-control"
+             name="name" required [(ngModel)]="elements.name">      
+            <label>Age</label> 
+            <select class="form-control" name="age" [(ngModel)]="elements.age">
+               <option value="20">20</option>
+               <option value="30">30</option>
+               <option value="40">40</option>
+             </select>      
+         </form>
+         <br>      
+         <!-- Add button to add record -->      
+         <!-- <button type="submit" (click)="AddItem()" [disabled]="IsForUpdate == true" class="btn btn-default">Add</button>   -->
+         <button type="submit" (click)="UpdateItem()" [disabled]="IsForUpdate == false" class="btn btn-default">Update</button>     
+         <button type="submit" (click)="closeModal()" class="btn btn-default">cancle</button>          
+      </div>
+      
+   </div>
+</ng-template>

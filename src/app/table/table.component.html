@@ -1,0 +1,88 @@
+<div class="container">
+      <div class="row mt-4">
+         <div class="col-md-3"></div>
+         <div class="col-md-6">
+            <div class="card">
+               <!-- <i class="material-icons blue" *ngIf="!editIcon" (click)="show()">edit</i>
+                  <i class="material-icons green" *ngIf="saveIcon" (click)="show()">save</i> -->
+               <button class="btn btn-info btn-md mb-2" (click)="openModal()">Add Record</button>
+               <div *ngFor="let data of myItems;let i= index" class="alert alert-info">
+                  {{data.Value}}  
+                  <!-- <button class="btn btn-xs btn-danger" >   -->
+                  <span class="material-icons" (click)="DeleteItem(i)"
+                     style="float: right;color: red;cursor: pointer;">delete</span>  
+                  <!-- </button>   -->
+                  <!-- <button class="btn btn-xs btn-info" >   -->
+                  <span class="material-icons" (click)="EditItem(i)" 
+                     style="float: right;padding-right: 8px;color: green;cursor: pointer;">edit</span>  
+                  <!-- </button>   -->
+               </div>
+               <div *ngIf="myItems.length == 0" class="alert alert-info">  
+                  Items Are Empty !!!  
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-6">
+         <!-- <div class="card">
+            <form #myform="ngForm" novalidate>
+            
+              <div class="col-md-12">
+                 <div class="mb-3">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" [(ngModel)]="elements.firstName" name="firstName" ngrequired>
+                 </div>
+              </div>
+              <div class="col-md-12">
+                 <div class="mb-3">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" [(ngModel)]="elements.lastName" name="lastName" ng-reflect-required>
+                 </div>
+              </div>
+              <div class="col-md-12">
+                 <div class="mb-3">
+                    <label>Age</label>
+                    <select class="form-control mb-3" [(ngModel)]="elements.age" name="age" ng-reflect-required>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="40">40</option>
+                    </select>    
+                 </div>
+              </div>
+              <div class="col-md-12">
+                 <button type="submit" class="btn btn-info mr-4"  (click)="add(myform)">Add</button>
+                 <button type="submit" class="btn btn-danger" (click)="reset(myform)">Reset</button>
+              </div>
+            </form>
+            
+            <div *ngIf="firstName?.errors?.required">
+             <div class="alert alert-danger">
+            Name is required.
+            </div>
+            </div>
+            </div> -->
+      </div>
+   </div>
+   <ng-template #editModal let-close="close">
+      <div class="modal-header">
+         <h5 class="modal-title"> Add / Update</h5>
+         <button type="button" class="close" (click)="closeModal()">
+         <span aria-hidden="true">&times;</span>
+         </button>
+      </div>
+      <div class="modal-body ">
+         <div class="form-group add">
+            <!-- Form that gets user input -->      
+            <form name="itemForm"> 
+               <label>Add</label>     
+               <input id="Value" name="Value" required [(ngModel)]="newItem.Value"
+               placeholder="Enter Any Item" class="form-control">      
+            </form>
+            <br>      
+            <!-- Add button to add record -->      
+            <button type="submit" (click)="AddItem()" [disabled]="IsForUpdate == true" class="btn btn-default">Add</button>  
+            <button type="submit" (click)="UpdateItem()" [disabled]="IsForUpdate == false" class="btn btn-default">Update</button>     
+            <button type="submit" (click)="closeModal()" class="btn btn-default">cancle</button>          
+         </div>
+      </div>
+   </ng-template>

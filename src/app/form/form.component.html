@@ -1,0 +1,105 @@
+<div class="container">
+    <div class="row">
+       <div class="col-sm-4">
+          <div class="card">
+             <form name="itemForm">
+               <label>Name</label>     
+               <input type="text" class="form-control"name="name" required [(ngModel)]="elements.name">      
+               <label>Age</label> 
+               <select class="form-control" name="age" [(ngModel)]="elements.age">
+                  <option value="20">20</option>
+                  <option value="30">30</option>
+                  <option value="40">40</option>
+               </select><br>
+               <button class="btn btn-sm btn-info" (click)="submit()">Submit</button> <br>   
+               <span>Res: {{ elements.name }}</span>
+             </form>
+          </div>
+       </div>
+       <div class="col-sm-4">
+          <div class="card">
+             <form (submit)="addHobby(hobby.value)">
+                <input type="text" class="form-control" placeholder="Add New Hobby..." #hobby><br>
+             </form>
+             <ul class="list-group">
+                <li class="list-group-item" *ngFor="let hobby of hobbies;let i = index">
+                   {{i+1}}:{{hobby}}
+                    <button class="btn btn-sm btn-danger float-right" (click)="deleteHobby(hobby)">
+                      <span class="fa fa-trash"></span>
+                   </button>
+                </li>
+             </ul><br>
+             <button class="btn btn-sm btn-info" (click)="addTest()">Add Hobby into Hobby List</button>
+          </div>
+       </div>
+       <div class="col-sm-4">
+          <div class="card">
+             <p>Direct Data Binding to the Form</p>
+             <button class="btn btn-sm btn-info" (click)="editToggle()">Edit User</button><br>
+             <ul class="list-group">
+                <li class="list-group-item">
+                   {{name}}
+                </li>
+                <!-- <li class="list-group-item">
+                   {{age}}
+                   </li> -->
+                <li class="list-group-item">
+                   {{email}}
+                </li>
+                <li class="list-group-item">
+                   {{address.city}}
+                </li>
+                <li class="list-group-item">
+                   {{address.state}}
+                </li>
+             </ul>
+          
+          </div>
+       </div>
+     
+       <div class="col-sm-4">
+          <div class="card">
+             <button class="btn btn-sm btn-info" (click)="onclick()">console test (Check in console)</button><br>
+             <button class="btn btn-sm btn-info" (click)="toggle()">Toggle (Show Array Data)</button><br>
+             <p *ngIf=a>test</p>
+          </div>
+       </div>
+       <div class="col-sm-4">
+          <div class="card">
+             <label>Show Array Data :</label>
+             <ul class="list-group">
+                <li class="list-group-item" *ngFor="let hero of heroes">
+                   {{ hero.id }} : {{ hero.name }}
+                </li>
+             </ul>
+          </div>
+       </div>
+       <div class="col-sm-4">
+         <div *ngIf=isEdit class="card">
+            <form>
+               <label for="name">Name</label>
+               <input class="form-control" type="text" name="name" [(ngModel)]="name">
+               <!-- <label for="age">Age</label>
+                  <input class="form-control" type="text" name="age" [(ngModel)]="age"> -->
+               <label for="email">Email</label>
+               <input class="form-control" type="text" name="email" [(ngModel)]="email">
+               <label for="city">City</label>
+               <input class="form-control" type="text" name="city" [(ngModel)]="address.city">
+               <label for="state">State</label>
+               <input class="form-control" type="text" name="state" [(ngModel)]="address.state">
+            </form>
+         </div>
+      </div>
+      <div class="col-sm-4">
+         <div class="card">
+            <label>Select Color From the Dropdown :</label>
+            <label class="font-b" [style.color]="rang">Text Color</label>
+            <select class="form-control" #color (change)="colorChange(color.value)">
+               <option>red</option>
+               <option>blue</option>
+               <option>green</option>
+            </select>
+         </div>
+      </div>
+   </div>
+</div>

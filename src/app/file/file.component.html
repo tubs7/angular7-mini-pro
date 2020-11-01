@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row mt-4">
+       <div class="col-sm-6 text-center">
+          <div class="card">
+            <input type="file" id="file" multiple 
+               (change)="getFileDetails($event)"  
+               style="margin: 8px;padding: 8px 5px;color: #333;width: auto;cursor: pointer;">
+          </div>
+       </div>
+       <!-- <div class="col-sm-6">
+          <div class="card">
+          <div class="detailCard">
+          <h4>For Single File</h4>
+          <ul class="list-group">
+              <li class="list-group-item">
+                  <span>File Name : </span> {{n}}
+              </li>
+              <li class="list-group-item">
+                  <span>File Type : </span>{{t}}
+              </li>
+              <li class="list-group-item">
+                  <span>File Modified Date : </span>{{d}}
+              </li>
+              <li class="list-group-item">
+                  <span>File Size : </span>{{s}}
+              </li>
+            </ul>
+          </div>
+          </div>
+          </div> -->
+       <div class="col-sm-6">
+          <div class="card">
+             <h4>For Multiple Selected Files</h4>
+             <table class="table table-bordered">
+                <th>File Name</th>
+                <th>File Type </th>
+                <th>File size </th>
+                <th>File Modified Date</th>
+                <tbody>
+                   <tr *ngFor="let K of all">
+                      <td>{{K.name}}</td>
+                      <td>{{K.type}}</td>
+                      <td>{{K.size}}</td>
+                      <td>{{K.modifiedDate | date:'d/M/y'}} </td>
+                   </tr>
+                <tbody>  
+             </table>
+          </div>
+       </div>
+    </div>
+ </div>
